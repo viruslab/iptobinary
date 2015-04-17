@@ -7,7 +7,7 @@ flag = 0
 def ip2binary(ip_string)
 	a = "" 
 	ip_string = ip_string.split(".")
-	ip_string.each {|x| a << "%08b" % x.to_i}
+	ip_string.each {|x| a << "%08b." % x.to_i}
 	return a
 end
 
@@ -50,9 +50,11 @@ while string.to_i != 0
 		print "The IP Address is either invalid or reserved \n"
 
 	else
-	string = ip2binary(string)
+	ip_list << ip2binary(string)[0...-1]
 	ip_number += 1
 	string = "1"
 	end
 
 end
+
+print ip_list
